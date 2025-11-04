@@ -5,22 +5,23 @@ Mobile-responsive web app that sends weekly lawn irrigation notifications based 
 
 **Tech Stack**: Reflex (Python web framework), Open-Meteo API (free weather data), modern SaaS UI design
 
-**Color Scheme**: Primary orange, Secondary gray, Font Roboto
+**Color Scheme**: Primary Green (#4CAF50), Secondary Dark Green (#1B5E20), Accent Blue (#03A9F4), Font Roboto
 
 ---
 
 ## Phase 1: Core UI & User Settings ✅
 **Goal**: Build the main settings interface where users input their 4 key parameters
 
-- [x] Create base app layout with modern SaaS styling (orange primary, gray secondary, Roboto font)
+- [x] Create base app layout with modern SaaS styling (green primary, gray secondary, Roboto font)
 - [x] Build settings form with 4 inputs:
-  - Grass type selector (Kikuyu, Couch/Bermuda, Buffalo, Tall Fescue)
+  - Grass type selector (8 types with images: Buffalo, Kikuyu, Couch/Bermuda, Zoysia, QLD Blue Couch, Tall Fescue, Fine Fescue, Seashore Paspalum)
   - Australian postcode input (4-digit validation)
-  - Sprinkler type selector (Oscillating, Fixed/Dome, Rotary/Gear-drive, Impact, Dripline)
+  - Sprinkler type selector (5 types with images: Oscillating, Fixed/Dome, Rotary/Gear-drive, Impact, Dripline)
   - Weekly notification time picker (day + time)
 - [x] Implement local storage for settings (no backend/login required)
 - [x] Add postcode → lat/long resolution with nearest weather station display
 - [x] Create responsive mobile-first design with cards, shadows, gradients
+- [x] Fix all image assets (grass types and sprinkler types displaying correctly)
 
 ---
 
@@ -38,21 +39,23 @@ Mobile-responsive web app that sends weekly lawn irrigation notifications based 
 - [x] Calculate watering minutes: deficit × (minutes per 10mm), rounded to nearest 5 min
 - [x] Implement emoji status logic (🌧 Heavy rain, 🌦 Light rain, ☀️ Dry, 🔥 Very dry)
 - [x] Display weather station info, coordinates, and data sources
-- [x] Create comprehensive postcode database with 42 major Australian locations
+- [x] Create comprehensive postcode database with 1292 Australian locations (VIC, WA south of -20°, NT)
 - [x] Build results card showing all calculation metrics with icons
 - [x] Add split watering guidance for sessions >45 minutes
+- [x] Applied green color scheme (#4CAF50) throughout the app
 
 ---
 
-## Phase 3: Notification System & Results Display
+## Phase 3: Notification System & Results Display (IN PROGRESS)
 **Goal**: Create notification scheduling and detailed lawn care recommendations
 
-- [ ] Build results dashboard showing:
+- [x] Build results dashboard showing:
   - Current week summary (week ending date, season, target)
-  - Observed rainfall vs target with visual progress indicator
+  - Observed rainfall vs target display
   - 48h forecast display
   - Emoji status with recommendation
   - Watering minutes calculation breakdown
+- [ ] Polish UI with image loading optimization
 - [ ] Create detailed "Lawn Care Guide" section:
   - Watering recommendation with split watering guidance
   - Dry-week watering guide (explain formula)
@@ -61,7 +64,7 @@ Mobile-responsive web app that sends weekly lawn irrigation notifications based 
 - [ ] Add browser notification permission handling
 - [ ] Create scheduled notification system (weekly at user-specified time)
 - [ ] Handle special cases (Winter watering rules for different grass types)
-- [ ] Polish UI with smooth transitions, hover states, and micro-interactions
+- [ ] Final polish: smooth transitions, hover states, and micro-interactions
 
 ---
 
@@ -77,11 +80,15 @@ Mobile-responsive web app that sends weekly lawn irrigation notifications based 
 ## Technical Specifications
 
 **Grass Type Targets (mm/week)**:
-- Kikuyu: Spring 20, Summer 25, Autumn 15, Winter 0*
+- Buffalo (Soft-leaf): Spring 20, Summer 25, Autumn 15, Winter 0*
+- Kikuyu: Spring 20, Summer 30, Autumn 15, Winter 0*
 - Couch/Bermuda: Spring 15, Summer 25, Autumn 10, Winter 0
-- Buffalo: Spring 20, Summer 25, Autumn 15, Winter 0
-- Tall Fescue: Spring 20, Summer 30, Autumn 20, Winter 10
-(*Winter: alert only if <10mm for 2 consecutive weeks)
+- Zoysia: Spring 20, Summer 25, Autumn 15, Winter 0*
+- QLD Blue Couch: Spring 15, Summer 25, Autumn 15, Winter 0
+- Tall Fescue: Spring 25, Summer 30, Autumn 25, Winter 10
+- Fine Fescue: Spring 20, Summer 30, Autumn 20, Winter 10
+- Seashore Paspalum: Spring 20, Summer 30, Autumn 15, Winter 0*
+(*Winter: alert only if <10mm for past 14 days, or <5mm for past 7 days)
 
 **Sprinkler Flow Rates**:
 - Oscillating: ~0.5 mm/min (10mm per 20min)
@@ -92,7 +99,7 @@ Mobile-responsive web app that sends weekly lawn irrigation notifications based 
 
 **Emoji Status Logic**:
 - 🌧 Heavy rain/Skip: forecast ≥25mm OR observed ≥target
-- 🌦 Light rain/Monitor: 5-20mm forecast OR observed within ±3mm of target
+- 🌦 Light rain/Monitor: 5-25mm forecast OR observed within ±3mm of target
 - ☀️ Dry/Water needed: forecast <5mm AND observed <target by >3mm
 - 🔥 Very dry/Deep watering: deficit >15mm AND forecast <5mm
 
@@ -103,9 +110,17 @@ Mobile-responsive web app that sends weekly lawn irrigation notifications based 
 
 **Timezone**: Australia/Melbourne
 **Storage**: Local storage (no account/login)
-**UI Style**: Modern SaaS (Linear/Stripe inspired) with orange primary, gray secondary
+**UI Style**: Modern SaaS (Linear/Stripe inspired) with green primary, gray secondary
 
 ---
 
 ## Current Status
-Phase 2 complete. Moving to Phase 3: Notification System & Results Display.
+✅ Phase 1 Complete: Core UI with all inputs, grass/sprinkler images loaded
+✅ Phase 2 Complete: Weather API integration, calculation logic, results display, green color scheme applied
+🔄 Phase 3 In Progress: Images verified and loaded, calculation tested and working. Need to complete notification system.
+
+**Latest Updates:**
+- Fixed all image asset paths (grass types and sprinkler types now using correct files)
+- Logo updated to use green_icon_sprinkler.png
+- Verified calculation engine works correctly (tested with postcode 3000)
+- All acceptance tests for Phases 1-2 passing

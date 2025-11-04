@@ -3,11 +3,11 @@ from typing import Any
 from app.state import LawnState, GRASS_INFO, SPRINKLER_TYPES, DAYS_OF_WEEK
 
 SPRINKLER_IMAGES = {
-    "Oscillating": "/placeholder.svg",
-    "Fixed/Dome": "/placeholder.svg",
-    "Rotary/Gear-drive": "/placeholder.svg",
-    "Impact": "/placeholder.svg",
-    "Dripline": "/placeholder.svg",
+    "Oscillating": "/oscillating_lawn_sprinkler.png",
+    "Fixed/Dome": "/dome_lawn_sprinkler.png",
+    "Rotary/Gear-drive": "/gear_lawn_rotary.png",
+    "Impact": "/impact_lawn_sprinkler.png",
+    "Dripline": "/irrigation_dripline_system.png",
 }
 
 
@@ -250,7 +250,7 @@ def index() -> rx.Component:
     return rx.el.main(
         rx.el.div(
             rx.el.div(
-                rx.image(src="placeholder.svg", class_name="h-12 w-auto"),
+                rx.image(src="/green_icon_sprinkler.png", class_name="h-12 w-auto"),
                 rx.el.h1(
                     "TurfCast",
                     class_name="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-green-600 ml-3",
