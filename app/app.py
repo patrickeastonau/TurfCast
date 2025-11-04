@@ -37,7 +37,7 @@ def sprinkler_option(sprinkler_type: str) -> rx.Component:
             ),
             class_name=rx.cond(
                 LawnState.sprinkler_type == sprinkler_type,
-                "rounded-lg border-2 border-orange-500 shadow-lg scale-105 bg-white",
+                "rounded-lg border-2 border-green-500 shadow-lg scale-105 bg-white",
                 "rounded-lg border border-gray-200 bg-white hover:shadow-md transition-all",
             ),
         ),
@@ -66,7 +66,7 @@ def grass_option(grass: dict) -> rx.Component:
             ),
             class_name=rx.cond(
                 LawnState.grass_type == grass["id"],
-                "rounded-lg border-2 border-orange-500 shadow-lg scale-105 bg-white",
+                "rounded-lg border-2 border-green-500 shadow-lg scale-105 bg-white",
                 "rounded-lg border border-gray-200 bg-white hover:shadow-md transition-all",
             ),
         ),
@@ -105,7 +105,7 @@ def settings_card() -> rx.Component:
                     placeholder="e.g., 3000",
                     on_change=LawnState.set_postcode,
                     maxLength=4,
-                    class_name="w-full p-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition",
+                    class_name="w-full p-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition",
                     default_value=LawnState.postcode,
                 ),
                 class_name="w-full",
@@ -138,7 +138,7 @@ def settings_card() -> rx.Component:
                         id="notification-day",
                         value=LawnState.notification_day,
                         on_change=LawnState.set_notification_day,
-                        class_name="w-full p-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition",
+                        class_name="w-full p-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition",
                     ),
                 ),
                 rx.el.div(
@@ -151,7 +151,7 @@ def settings_card() -> rx.Component:
                         type="time",
                         id="notification-time",
                         on_change=LawnState.set_notification_time,
-                        class_name="w-full p-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition",
+                        class_name="w-full p-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition",
                         default_value=LawnState.notification_time,
                     ),
                 ),
@@ -165,7 +165,7 @@ def settings_card() -> rx.Component:
             on_click=LawnState.calculate_watering,
             is_loading=LawnState.is_loading,
             disabled=~LawnState.is_form_valid | LawnState.is_loading,
-            class_name="w-full flex justify-center items-center bg-orange-500 text-white font-bold py-4 px-4 rounded-lg hover:bg-orange-600 transition-all duration-300 disabled:bg-gray-300 disabled:cursor-not-allowed text-lg shadow-md hover:shadow-lg",
+            class_name="w-full flex justify-center items-center bg-green-500 text-white font-bold py-4 px-4 rounded-lg hover:bg-green-600 transition-all duration-300 disabled:bg-gray-300 disabled:cursor-not-allowed text-lg shadow-md hover:shadow-lg",
         ),
         rx.cond(
             LawnState.error_message != "",
@@ -207,9 +207,9 @@ def results_card() -> rx.Component:
                     rx.el.div(
                         rx.el.p(
                             LawnState.calculation_result["recommendation"],
-                            class_name="text-xl font-medium text-center text-orange-800",
+                            class_name="text-xl font-medium text-center text-green-800",
                         ),
-                        class_name="bg-orange-100 p-6 rounded-xl mb-8 border border-orange-200",
+                        class_name="bg-green-100 p-6 rounded-xl mb-8 border border-green-200",
                     ),
                     rx.el.div(
                         icon_text(
@@ -253,7 +253,7 @@ def index() -> rx.Component:
                 rx.image(src="placeholder.svg", class_name="h-12 w-auto"),
                 rx.el.h1(
                     "TurfCast",
-                    class_name="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600 ml-3",
+                    class_name="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-green-600 ml-3",
                 ),
                 class_name="flex items-center justify-center mb-4",
             ),
@@ -266,7 +266,7 @@ def index() -> rx.Component:
                     "Feed in your grass type, postcode, and sprinkler setup — TurfCast’ll tell you if it’s time to water, or if nature’s already shouted you a round.",
                     class_name="text-center text-gray-700",
                 ),
-                class_name="bg-orange-50 border border-orange-200 p-4 rounded-lg max-w-2xl mx-auto mb-12",
+                class_name="bg-blue-50 border border-blue-200 p-4 rounded-lg max-w-2xl mx-auto mb-12",
             ),
             settings_card(),
             rx.cond(
@@ -285,14 +285,14 @@ def index() -> rx.Component:
                         "Open-Meteo",
                         href="https://open-meteo.com/",
                         target="_blank",
-                        class_name="text-orange-600 hover:underline font-semibold",
+                        class_name="text-blue-600 hover:underline font-semibold",
                     ),
                     " and ",
                     rx.el.a(
                         "Reflex",
                         href="https://reflex.dev/",
                         target="_blank",
-                        class_name="text-orange-600 hover:underline font-semibold",
+                        class_name="text-blue-600 hover:underline font-semibold",
                     ),
                     ".",
                 ),
