@@ -73,19 +73,19 @@ GRASS_INFO = [
         "id": "tall_fescue",
         "display_name": "Tall Fescue",
         "scientific_name": "Festuca arundinacea",
-        "image": "/placeholder.svg",
+        "image": "/tall_grass_lawn.png",
     },
     {
         "id": "fine_fescue",
         "display_name": "Fine Fescue",
         "scientific_name": "Festuca spp.",
-        "image": "/placeholder.svg",
+        "image": "/grass_texture_close.png",
     },
     {
         "id": "seashore_paspalum",
         "display_name": "Seashore Paspalum",
         "scientific_name": "Paspalum vaginatum",
-        "image": "/placeholder.svg",
+        "image": "/grass_soft_close.png",
     },
 ]
 GRASS_TYPES = [g["id"] for g in GRASS_INFO]
