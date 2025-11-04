@@ -250,7 +250,7 @@ def index() -> rx.Component:
     return rx.el.main(
         rx.el.div(
             rx.el.div(
-                rx.image(src="placeholder.svg", class_name="h-12 w-12"),
+                rx.image(src="placeholder.svg", class_name="h-12 w-auto"),
                 rx.el.h1(
                     "TurfCast",
                     class_name="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600 ml-3",
